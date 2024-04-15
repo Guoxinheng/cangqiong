@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.OrderDetailMapper">
+
+
+    <insert id="save">
+
+        insert into order_detail(dish_flavor,number,name,image,setmeal_id,order_id,dish_id,amount)
+        values(#{dish_flavor},#{number},#{name},#{image},#{setmealId},#{orderId},#{dishId},#{amount})
+    </insert>
+</mapper>
