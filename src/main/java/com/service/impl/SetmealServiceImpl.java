@@ -121,7 +121,7 @@ public class SetmealServiceImpl implements SetmealService {
 
     @Override
     @Transactional
-    public void deleteSetmealWithSetmealDish(Long[] ids) {
+    public void deleteSetmealWithSetmealDish(List<Long> ids) {
         //先删除菜品和套餐关联表的数据
           setmealDishMapper.deleteSetmealDish(ids);
         //再删除套餐表中的数据

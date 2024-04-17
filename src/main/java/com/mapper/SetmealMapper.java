@@ -38,7 +38,9 @@ public interface SetmealMapper {
      @AutoFill(OperationType.INSERT)
     void saveSetmeal(Setmeal setmeal);
 
-    void deleteSetmeal(@Param("ids") Long[] ids);
+    void deleteSetmeal(@Param("ids") List<Long> ids);
      @AutoFill(OperationType.UPDATE)
     void updateSetmeal(Setmeal setmeal);
+   @Select("select * from setmeal where category_id = #{categoryId}")
+    List<Setmeal> getSetmealByCategoryId(Long id);
 }

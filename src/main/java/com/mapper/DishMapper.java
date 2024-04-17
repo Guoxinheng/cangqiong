@@ -40,5 +40,11 @@ public interface DishMapper {
 
     List<Dish> list(Dish dish);
 
+    /**
+     * 根据类别ID获取菜品列表
+     * @param categoryId 菜品类别的ID
+     * @return 返回对应类别ID的菜品列表
+     */
     List<Dish> getDishbyCategoryId(Long categoryId);
+
 }

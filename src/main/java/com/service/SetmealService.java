@@ -26,7 +26,7 @@ public interface SetmealService {
 
     void saveSetmeal(AddSetmealDTO addSetmealDTO);
 
-    void deleteSetmealWithSetmealDish(Long[] ids);
+    void deleteSetmealWithSetmealDish(List<Long> ids);
 
     void updateSetmeal(UpdateSetmealDTO updateSetmealDTO);
 }

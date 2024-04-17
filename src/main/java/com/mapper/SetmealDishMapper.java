@@ -14,7 +14,7 @@ public interface SetmealDishMapper {
 
     void saveSetmealDish(@Param("setmealDishes") List<SetmealDish> setmealDishes);
      @AutoFill(OperationType.UPDATE)
-    void deleteSetmealDish(@Param("ids") Long[] ids);
+    void deleteSetmealDish(@Param("ids") List<Long> ids);
 
     void deleteSetmealDishBySetmealId(Long id);
 }

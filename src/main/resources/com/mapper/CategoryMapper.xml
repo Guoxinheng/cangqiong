@@ -3,6 +3,10 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mapper.CategoryMapper">
+    <insert id="addCategory">
+        insert into category(type,name,sort,status,create_user,create_time,update_time,update_user)
+        values(#{type},#{name},#{sort},#{status},#{createUser},#{createTime},#{updateTime},#{updateUser})
+    </insert>
 
 
     <select id="list" resultType="com.entity.Category">
@@ -12,5 +16,17 @@
             and type = #{type}
         </if>
         order by sort asc,create_time desc
+    </select>
+    <select id="getCategoryPage" resultType="com.entity.Category">
+     select * from  category
+          <where>
+    <if test="name != null and name != ''">
+        and name like concat('%',#{name},'%')
+    </if>
+    <if test="type != null">
+        and type = #{type}
+    </if>
+     </where>
+  order by sort asc,create_time desc
     </select>
 </mapper>

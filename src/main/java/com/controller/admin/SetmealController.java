@@ -16,6 +16,7 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @RestController("adminSetmealController")
 @RequestMapping("/admin/setmeal")
@@ -55,7 +56,7 @@ public class SetmealController {
     @DeleteMapping()
     @ApiOperation("批量删除套餐")
     @CacheEvict(cacheNames = "setmealCache",allEntries = true)
-    public Result<String> deleteSetmealWithSetmealDish(@RequestParam() Long[] ids)
+    public Result<String> deleteSetmealWithSetmealDish(@RequestParam() List<Long> ids)
     {
         setmealService.deleteSetmealWithSetmealDish(ids);
          return Result.success("批量删除成功");
