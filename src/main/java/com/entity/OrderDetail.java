@@ -13,7 +13,7 @@ public class OrderDetail implements Serializable{
     Long orderId;//订单id
     Long dishId;//菜品id
     Long setmealId;//套餐id
-    String dish_flavor;//口味
+    String dishFlavor;//口味
     Integer number;//数量
     BigDecimal amount;//金额
 }

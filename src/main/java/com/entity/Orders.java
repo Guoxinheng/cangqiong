@@ -10,6 +10,15 @@ import java.time.LocalDateTime;
 
 @Data
 public class Orders implements Serializable {
+
+    public static final Integer PENDING_PAYMENT=1;//待付款
+    public static final Integer PENDING_ORDERS=2;//待接单
+    public static final Integer RECEIVED_ORDER=3;//已接单
+    public static final Integer DELIVERY_IN_PROGRESS=4;//派送中
+    public static final Integer COMPLETED_ORDER=5;//已完成
+    public static final Integer ORDER_CANCELLED=6;//已取消
+
+
     Long id;//主键
     String number;//订单号
     Integer status;//订单状态

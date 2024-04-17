@@ -8,6 +8,6 @@
     <insert id="save">
 
         insert into order_detail(dish_flavor,number,name,image,setmeal_id,order_id,dish_id,amount)
-        values(#{dish_flavor},#{number},#{name},#{image},#{setmealId},#{orderId},#{dishId},#{amount})
+        values(#{dishFlavor},#{number},#{name},#{image},#{setmealId},#{orderId},#{dishId},#{amount})
     </insert>
 </mapper>

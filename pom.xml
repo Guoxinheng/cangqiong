@@ -117,6 +117,11 @@
             <artifactId>druid</artifactId>
             <version>1.2.20</version>
         </dependency>
+        <!--导入websocket依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-websocket</artifactId>
+        </dependency>
 
     </dependencies>
     <dependencyManagement>
