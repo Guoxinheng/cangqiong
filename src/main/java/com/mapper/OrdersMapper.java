@@ -7,6 +7,8 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -80,4 +82,79 @@ public interface OrdersMapper {
      */
     @Update("update orders set status = #{status},cancel_time=#{cancelTime},cancel_reason=#{cancelReason} where id = #{id}")
     void cancelOrderById(Orders orders);
+
+    /**
+     * 条件搜索订单
+     *
+     * @param orders 包含搜索条件的订单对象
+     * @return 返回符合条件的订单页面信息
+     */
+    /**
+     * 条件搜索订单
+     *
+     * @param orders 包含搜索条件的订单对象
+     * @return 返回符合条件的订单页面对象
+     */
+    Page<Orders> conditionSearch(Orders orders);
+
+    /**
+     * 更新订单状态为拒绝，并设置拒绝原因和取消时间
+     *
+     * @param orders 包含订单ID、新状态、拒绝原因和取消时间的订单对象
+     */
+    @Update("update orders set status=#{status},rejection_reason=#{rejectionReason},cancel_time=#{cancelTime} where id=#{id}")
+    void rejection(Orders orders);
+    /**
+     * 从数据库中获取所有订单的信息列表。
+     *
+     * @return List<Orders> 返回一个订单信息的列表，包含所有订单。
+     */
+    @Select("select * from orders")
+    List<Orders> getOrdersList();
+    /**
+     * 根据ID更新订单的状态。
+     *
+     * @param id 订单的唯一标识符，用于指定要更新的订单。
+     * @return void 方法没有返回值。
+     */
+    @Update("update orders set status = #{status} where id = #{id}")
+    void updateById(@Param("id") Long id,@Param("status") Integer status);
+
+    /**
+     * 更新订单状态为完成。
+     * @param order 需要更新状态的订单对象。
+     * 该方法不返回任何内容。
+     */
+    void updateComplete(Orders order);
+
+    /**
+     * 根据指定的开始时间、结束时间和状态，获取这段时间内的总金额。
+     *
+     * @param beginTime 指定的开始时间，使用LocalDateTime表示。
+     * @param endTime 指定的结束时间，使用LocalDateTime表示。
+     * @param status 状态参数，用于筛选特定状态的记录。具体状态的含义根据业务逻辑而定。
+     * @return 返回这段时间内符合条件的记录的总金额，返回类型为Double。
+     */
+    Double getSumAmountByDate(@Param("beginTime") LocalDateTime beginTime, @Param("endTime") LocalDateTime endTime, @Param("status") Integer status);
+
+    /**
+     * 获取指定时间范围内的订单总数。
+     *
+     * @param beginTime 开始时间，用于限定查询订单的起始时间点。
+     * @param endTime 结束时间，用于限定查询订单的结束时间点。
+     * @return 返回订单总数，返回类型为Double，如果查询结果为空则返回null。
+     */
+    Double getOrderCount(@Param("beginTime")LocalDateTime beginTime,@Param("endTime")  LocalDateTime endTime);
+
+    /**
+     * 获取指定时间范围内指定状态的订单总数。
+     *
+     * @param beginTime 开始时间，用于限定查询订单的起始时间点。
+     * @param endTime 结束时间，用于限定查询订单的结束时间点。
+     * @param status 订单状态，用于筛选指定状态的订单。
+     * @return 返回符合条件的订单总数，返回类型为Double，如果查询结果为空则返回null。
+     */
+    Double getValidOrderCount(@Param("beginTime")LocalDateTime beginTime,@Param("endTime")  LocalDateTime endTime,@Param("status") Integer status);
+
+    List<Long> getOrderId(@Param("begin") LocalDate begin,@Param("end") LocalDate end);
 }

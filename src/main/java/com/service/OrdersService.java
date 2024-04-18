@@ -1,12 +1,10 @@
 package com.service;
 
-import com.dto.OrderSubmitDTO;
-import com.dto.OrdersListDTO;
-import com.dto.OrdersPaymentDTO;
-import com.vo.ListOrdersVO;
-import com.vo.OrderPaymentVO;
-import com.vo.OrderSubmitVO;
-import com.vo.PageOrdersVO;
+import com.dto.*;
+import com.vo.*;
+
+import java.time.LocalDate;
+
 public interface OrdersService {
     OrderSubmitVO submit(OrderSubmitDTO orderSubmitDTO);
 
@@ -23,4 +21,22 @@ public interface OrdersService {
     void cancaelOrderById(Long id);
 
     void reminder(Long id);
+
+    PageOrdersSearchVO conditionSearch(PageOrdersDTO pageOrdersDTO);
+
+    OrderDetailListVO getOrdersDetailListById(Long id);
+
+    void rejection(RejectionOrderDTO rejectionOrderDTO);
+
+    StatisticsNumberVO statistics();
+
+    void confirm(Long id);
+
+    void deliver(Long id);
+
+    void complete(Long id);
+
+    void cancaelOrderByIdBecauseAdmin(CancelOrdersDTO cancelOrdersDTO);
+
+
 }

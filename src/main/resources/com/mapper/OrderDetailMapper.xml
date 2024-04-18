@@ -10,4 +10,15 @@
         insert into order_detail(dish_flavor,number,name,image,setmeal_id,order_id,dish_id,amount)
         values(#{dishFlavor},#{number},#{name},#{image},#{setmealId},#{orderId},#{dishId},#{amount})
     </insert>
+    <select id="getNameAndNumber" resultType="com.dto.OrderDetailTopDTO">
+        select od.name,sum(od.number) number from order_detail od,orders o where od.order_id=o.id and o.status=5
+                <if test="beginTime!=null">
+                and o.order_time &gt;= #{beginTime}
+                </if>
+                <if test="endTime!=null">
+
+              and o.order_time &lt;= #{endTime}
+               </if>
+        group by name order by number desc limit 0,10;
+    </select>
 </mapper>
