@@ -1,4 +1,4 @@
-package com.dto;
+package com.constant.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;

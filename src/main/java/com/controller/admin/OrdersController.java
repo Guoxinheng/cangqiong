@@ -1,8 +1,8 @@
 package com.controller.admin;
-import com.dto.CancelOrdersDTO;
-import com.dto.ConfirmDTO;
-import com.dto.PageOrdersDTO;
-import com.dto.RejectionOrderDTO;
+import com.constant.dto.CancelOrdersDTO;
+import com.constant.dto.ConfirmDTO;
+import com.constant.dto.PageOrdersDTO;
+import com.constant.dto.RejectionOrderDTO;
 import com.result.Result;
 import com.service.OrdersService;
 import com.vo.OrderDetailListVO;

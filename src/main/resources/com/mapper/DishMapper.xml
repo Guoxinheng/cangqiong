@@ -63,5 +63,10 @@
          select * from dish where category_id = #{categoryId}
 
     </select>
+    <select id="selectCountByStatus" resultType="java.lang.Long">
+
+       select count(*) from dish where status=#{status};
+
+    </select>
 
 </mapper>

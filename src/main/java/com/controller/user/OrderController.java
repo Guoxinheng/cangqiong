@@ -1,9 +1,8 @@
 package com.controller.user;
 
-import com.dto.OrderSubmitDTO;
-import com.dto.OrdersListDTO;
-import com.dto.OrdersPaymentDTO;
-import com.github.pagehelper.Page;
+import com.constant.dto.OrderSubmitDTO;
+import com.constant.dto.OrdersListDTO;
+import com.constant.dto.OrdersPaymentDTO;
 import com.result.Result;
 import com.service.OrdersService;
 import com.vo.ListOrdersVO;

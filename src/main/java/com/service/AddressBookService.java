@@ -1,6 +1,6 @@
 package com.service;
 
-import com.dto.AddressBookDTO;
+import com.constant.dto.AddressBookDTO;
 import com.entity.AddressBook;
 import com.vo.AddressBookVO;
 

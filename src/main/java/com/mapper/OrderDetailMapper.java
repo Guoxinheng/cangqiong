@@ -1,12 +1,11 @@
 package com.mapper;
 
-import com.dto.OrderDetailTopDTO;
+import com.constant.dto.OrderDetailTopDTO;
 import com.entity.OrderDetail;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 

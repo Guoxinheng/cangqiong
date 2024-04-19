@@ -1,10 +1,10 @@
 package com.service;
 
-import com.dto.EditPasswordEmployeeDTO;
-import com.dto.LoginDTO;
+import com.constant.dto.EditPasswordEmployeeDTO;
+import com.constant.dto.LoginDTO;
 
-import com.dto.PageEmployeeDTO;
-import com.dto.SaveEmployeeDTO;
+import com.constant.dto.PageEmployeeDTO;
+import com.constant.dto.SaveEmployeeDTO;
 import com.entity.Employee;
 import com.vo.PageEmployeeVO;
 

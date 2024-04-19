@@ -1,6 +1,6 @@
 package com.mapper;
 import com.annotation.AutoFill;
-import com.dto.EditPasswordEmployeeDTO;
+import com.constant.dto.EditPasswordEmployeeDTO;
 import com.entity.Employee;
 import com.enumeration.OperationType;
 import com.github.pagehelper.Page;

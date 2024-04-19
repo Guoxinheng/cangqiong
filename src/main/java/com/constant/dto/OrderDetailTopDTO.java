@@ -1,4 +1,4 @@
-package com.dto;
+package com.constant.dto;
 
 import lombok.Data;
 

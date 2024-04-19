@@ -1,7 +1,7 @@
 package com.mapper;
 
 import com.annotation.AutoFill;
-import com.dto.PageCategoryDTO;
+import com.constant.dto.PageCategoryDTO;
 import com.entity.Category;
 import com.enumeration.OperationType;
 import com.github.pagehelper.Page;

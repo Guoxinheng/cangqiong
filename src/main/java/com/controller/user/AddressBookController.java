@@ -1,7 +1,7 @@
 package com.controller.user;
 
-import com.dto.AddressBookDTO;
-import com.dto.GetAddressDTO;
+import com.constant.dto.AddressBookDTO;
+import com.constant.dto.GetAddressDTO;
 import com.entity.AddressBook;
 import com.result.Result;
 import com.service.AddressBookService;

@@ -1,6 +1,6 @@
 package com.controller.user;
 
-import com.dto.UserLoginDTO;
+import com.constant.dto.UserLoginDTO;
 import com.entity.User;
 import com.properties.JwtProperties;
 import com.result.Result;

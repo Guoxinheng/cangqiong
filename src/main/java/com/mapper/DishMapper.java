@@ -1,13 +1,11 @@
 package com.mapper;
 
 import com.annotation.AutoFill;
-import com.dto.PageDishDTO;
+import com.constant.dto.PageDishDTO;
 import com.entity.Dish;
 import com.enumeration.OperationType;
 import com.github.pagehelper.Page;
-import com.vo.DishListVO;
 import com.vo.DishVO;
-import com.vo.PageDishVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -47,4 +45,11 @@ public interface DishMapper {
      */
     List<Dish> getDishbyCategoryId(Long categoryId);
 
+    /**
+     * 根据状态查询记录数
+     *
+     * @param i 状态值，用于筛选特定状态的记录
+     * @return 返回满足条件的记录数量
+     */
+    Long selectCountByStatus(int i);
 }

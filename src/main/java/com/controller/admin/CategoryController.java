@@ -1,7 +1,7 @@
 package com.controller.admin;
 
-import com.dto.EditCategoryDTO;
-import com.dto.PageCategoryDTO;
+import com.constant.dto.EditCategoryDTO;
+import com.constant.dto.PageCategoryDTO;
 import com.entity.Category;
 import com.result.Result;
 import com.service.CategoryService;

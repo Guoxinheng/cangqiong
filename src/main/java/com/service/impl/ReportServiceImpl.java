@@ -1,14 +1,23 @@
 package com.service.impl;
-import com.dto.OrderReportVO;
+import com.constant.dto.OrderReportVO;
 import com.entity.Orders;
 import com.mapper.OrdersMapper;
 import com.mapper.UserMapper;
 import com.service.ReportService;
+import com.service.WorkspaceService;
+import com.vo.BusinessDataVO;
 import com.vo.TurnoverReportVO;
 import com.vo.UserReportVO;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.InputStream;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -21,6 +30,8 @@ public class ReportServiceImpl implements ReportService {
      private   OrdersMapper ordersMapper;
     @Autowired
     private UserMapper userMapper;
+    @Autowired
+    private WorkspaceService workspaceService;
     /**
      * 统计指定日期范围内的营业额报告。
      *
@@ -155,6 +166,46 @@ public class ReportServiceImpl implements ReportService {
         orderReportVO.setValidOrderCount(totalValidOrderCount);
         orderReportVO.setTotalOrderCount(totalOrderCount);
         return orderReportVO;
+    }
+
+    @Override
+    public void export(HttpServletResponse response) {
+        LocalDate now = LocalDate.now();
+        LocalDate begin = now.minusDays(30);
+        LocalDate end = now.minusDays(1);
+        //查询出今日数据
+        BusinessDataVO businessDataVO=workspaceService.businessData(begin,end);
+        InputStream resource = this.getClass().getClassLoader().getResourceAsStream("template/运营数据报表模板.xlsx");
+        try {
+            XSSFWorkbook excel=new XSSFWorkbook(resource);
+            XSSFSheet sheet = excel.getSheet("sheet1");
+            sheet.getRow(1).getCell(1).setCellValue("时间"+begin.toString()+"至"+end.toString()+"营业数据报告");
+            sheet.getRow(3).getCell(2).setCellValue(businessDataVO.getTurnover());//营业额
+            sheet.getRow(3).getCell(4).setCellValue(businessDataVO.getOrderCompletionRate());//订单完成率
+            sheet.getRow(3).getCell(6).setCellValue(businessDataVO.getNewUsers());//新增用户
+            sheet.getRow(4).getCell(2).setCellValue(businessDataVO.getValidOrderCount());//有效订单
+            sheet.getRow(4).getCell(4).setCellValue(businessDataVO.getUnitPrice());//  平均客单价
+
+            for (int i = 0; i < 30; i++)
+            {
+                BusinessDataVO businessDataVO1 = workspaceService.businessData(begin.plusDays(i), begin.plusDays(i));
+                sheet.getRow(7+i).getCell(1).setCellValue(String.valueOf(begin.plusDays(i)));//日期
+                sheet.getRow(7+i).getCell(2).setCellValue(businessDataVO1.getTurnover());//营业额
+                sheet.getRow(7+i).getCell(3).setCellValue(businessDataVO1.getValidOrderCount());//有效订单
+                sheet.getRow(7+i).getCell(4).setCellValue(businessDataVO1.getOrderCompletionRate());//订单完成率
+                sheet.getRow(7+i).getCell(5).setCellValue(businessDataVO1.getUnitPrice());//平均客单价
+                sheet.getRow(7+i).getCell(6).setCellValue(businessDataVO1.getNewUsers());//新增用户数
+            }
+
+            ServletOutputStream outputStream = response.getOutputStream();
+            excel.write(outputStream);
+            resource.close();
+            excel.close();
+            outputStream.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

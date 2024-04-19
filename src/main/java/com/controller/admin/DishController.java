@@ -1,8 +1,8 @@
 package com.controller.admin;
 
-import com.dto.AddDishDTO;
-import com.dto.PageDishDTO;
-import com.dto.UpdateDishAndDishFlavor;
+import com.constant.dto.AddDishDTO;
+import com.constant.dto.PageDishDTO;
+import com.constant.dto.UpdateDishAndDishFlavor;
 import com.entity.Dish;
 import com.result.Result;
 import com.service.DishService;

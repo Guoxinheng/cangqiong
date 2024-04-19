@@ -1,7 +1,7 @@
 package com.mapper;
 
 import com.annotation.AutoFill;
-import com.dto.SetmealListDTO;
+import com.constant.dto.SetmealListDTO;
 import com.entity.Setmeal;
 import com.entity.SetmealDish;
 import com.enumeration.OperationType;
@@ -43,4 +43,12 @@ public interface SetmealMapper {
     void updateSetmeal(Setmeal setmeal);
    @Select("select * from setmeal where category_id = #{categoryId}")
     List<Setmeal> getSetmealByCategoryId(Long id);
+    /**
+     * 根据状态查询套餐的数量。
+     *
+     * @param status 套餐的状态，用于筛选数据。
+     * @return 返回满足条件的套餐数量。
+     */
+    @Select("select count(*) from setmeal where status = #{status}")
+    Long selectCountByStatus(int status);
 }

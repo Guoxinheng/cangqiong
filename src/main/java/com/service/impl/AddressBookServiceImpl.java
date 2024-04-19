@@ -2,13 +2,12 @@ package com.service.impl;
 
 import com.constant.MessageConstant;
 import com.context.BaseContext;
-import com.dto.AddressBookDTO;
+import com.constant.dto.AddressBookDTO;
 import com.entity.AddressBook;
 import com.exception.AddressDeleteErrorException;
 import com.mapper.AddressBookMapper;
 import com.service.AddressBookService;
 import com.vo.AddressBookVO;
-import org.apache.ibatis.ognl.MemberAccess;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

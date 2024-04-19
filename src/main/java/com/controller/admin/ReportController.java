@@ -1,7 +1,7 @@
 package com.controller.admin;
 
 
-import com.dto.OrderReportVO;
+import com.constant.dto.OrderReportVO;
 import com.result.Result;
 import com.service.OrderDetailService;
 import com.service.ReportService;
@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletResponse;
 import java.time.LocalDate;
 
 
@@ -99,5 +100,21 @@ public class ReportController {
        salesTop10ReportVO= orderDetailService.ordersTop(begin,end);
       return  Result.success(salesTop10ReportVO); // 返回查询结果
    }
+
+    /**
+     * 导出Excel报表的接口。
+     * <p>
+     * 该接口用于触发报表的Excel导出功能。通过调用reportService的export方法，将报表数据以Excel格式响应给客户端。
+     * </p>
+     *
+     * @param response 用于设置导出的Excel文件的HTTP响应，包括文件名、内容类型等。
+     */
+    @GetMapping("/export")
+    @ApiOperation("导出Excel报表")
+    public void export(HttpServletResponse response)
+    {
+        log.info("导出Excel报表"); // 记录导出Excel报表的开始日志
+        reportService.export(response); // 调用报表服务导出Excel报表
+    }
 
 }

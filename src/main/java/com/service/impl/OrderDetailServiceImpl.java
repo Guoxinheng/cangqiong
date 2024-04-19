@@ -1,6 +1,6 @@
 package com.service.impl;
 
-import com.dto.OrderDetailTopDTO;
+import com.constant.dto.OrderDetailTopDTO;
 import com.mapper.OrderDetailMapper;
 import com.service.OrderDetailService;
 import com.vo.SalesTop10ReportVO;

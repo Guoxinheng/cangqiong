@@ -6,8 +6,6 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
-
-import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -157,4 +155,34 @@ public interface OrdersMapper {
     Double getValidOrderCount(@Param("beginTime")LocalDateTime beginTime,@Param("endTime")  LocalDateTime endTime,@Param("status") Integer status);
 
     List<Long> getOrderId(@Param("begin") LocalDate begin,@Param("end") LocalDate end);
+
+    /**
+     * 获取指定时间段内，指定状态的营业额。
+     *
+     * @param begin 开始时间
+     * @param end 结束时间
+     * @param status 状态码，用于筛选特定状态的数据
+     * @return 指定时间段内符合条件的营业额总和，返回Double类型表示金额
+     */
+    Double getTurnover(@Param("begin") LocalDateTime begin,@Param("end") LocalDateTime end,@Param("status") Integer status);
+
+    /**
+     * 获取指定时间段内，指定状态的有效用户数。
+     *
+     * @param begin 开始时间
+     * @param end 结束时间
+     * @param status 状态码，用于筛选特定状态的数据
+     * @return 指定时间段内符合条件的有效用户数量，返回Double类型表示用户数量
+     */
+    Double getValidUser(@Param("begin") LocalDateTime begin,@Param("end") LocalDateTime end,@Param("status") Integer status);
+
+    /**
+     * 根据指定日期范围和状态获取总和值。
+     *
+     * @param begin 开始日期时间，用于查询的起始点。
+     * @param end 结束日期时间，用于查询的结束点。
+     * @param status 状态参数，用于筛选满足特定状态的数据。
+     * @return 返回满足条件的数据总和，以Double形式表示。
+     */
+    Double getSumByDate(@Param("begin") LocalDateTime begin,@Param("end") LocalDateTime end,@Param("status") Integer status);
 }
