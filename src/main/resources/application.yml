@@ -30,15 +30,15 @@ sky:
     # 设置前端传递过来的令牌名称
     user-token-name: authentication
   alioss:
-    bucket-name: big-eventguo
-    endpoint: oss-cn-beijing.aliyuncs.com
-    access-key-secret: 8u6UKS36M2fHiExWbun0ziRhi5mJKr
-    access-key-id: LTAI5tQaVqPbg4DejpTtMQJj
+    bucket-name: 
+    endpoint: 
+    access-key-secret: 
+    access-key-id: 
   wechat:
-    appid: wx439d281bdde27142  #微信小程序申请的账号
-    secret: c3113753d6a14b3d585dc52ab76203f2 #微信小程序开发的密钥
-    mchid: 1561414331   #商户号
-    mchSerialNo: 4B3B3DC35414AD50B1B755BAF8DE9CC7CF407606  #商户证书序列号
+    appid:   #微信小程序申请的账号
+    secret:  #微信小程序开发的密钥
+    mchid:    #商户号
+    mchSerialNo:   #商户证书序列号
     privateKeyFilePath: D:\pay\apiclient_key.pem  #商户私钥  存在本地文件了
     apiV3Key: CZBK51236435wxpay435434323FFDuv3   #apiV3密钥
     weChatPayCertFilePath: D:\pay\wechatpay_166D96F876F45C7D07CE98952A96EC980368ACFC.pem   #微信支付证书  存在本地文件了
